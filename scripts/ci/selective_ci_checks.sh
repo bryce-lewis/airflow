@@ -198,8 +198,8 @@ function set_upgrade_to_newer_dependencies() {
     initialization::ga_output upgrade-to-newer-dependencies "${@}"
 }
 
-
-ALL_TESTS="Always API Core Other CLI Providers WWW Integration"
+# Providers tests are disabled in v2-0-test branch providers are released from master
+ALL_TESTS="Always API Core Other CLI WWW Integration"
 readonly ALL_TESTS
 
 function set_outputs_run_everything_and_exit() {
@@ -588,12 +588,12 @@ function calculate_test_types_to_run() {
             SELECTED_TESTS="${SELECTED_TESTS} CLI"
             kubernetes_tests_needed="true"
         fi
-        if [[ ${COUNT_PROVIDERS_CHANGED_FILES} != "0" ]]; then
-            echo
-            echo "Adding Providers to selected files as ${COUNT_PROVIDERS_CHANGED_FILES} Provider files changed"
-            echo
-            SELECTED_TESTS="${SELECTED_TESTS} Providers"
-        fi
+#        if [[ ${COUNT_PROVIDERS_CHANGED_FILES} != "0" ]]; then
+#            echo
+#            echo "Adding Providers to selected files as ${COUNT_PROVIDERS_CHANGED_FILES} Provider files changed"
+#            echo
+#            SELECTED_TESTS="${SELECTED_TESTS} Providers"
+#        fi
         if [[ ${COUNT_WWW_CHANGED_FILES} != "0" ]]; then
             echo
             echo "Adding WWW to selected files as ${COUNT_WWW_CHANGED_FILES} WWW files changed"

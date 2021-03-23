@@ -300,8 +300,8 @@ else
         SELECTED_TESTS=("${CLI_TESTS[@]}")
     elif [[ ${TEST_TYPE:=""} == "API" ]]; then
         SELECTED_TESTS=("${API_TESTS[@]}")
-    elif [[ ${TEST_TYPE:=""} == "Providers" ]]; then
-        SELECTED_TESTS=("${PROVIDERS_TESTS[@]}")
+#    elif [[ ${TEST_TYPE:=""} == "Providers" ]]; then
+#        SELECTED_TESTS=("${PROVIDERS_TESTS[@]}")
     elif [[ ${TEST_TYPE:=""} == "Core" ]]; then
         SELECTED_TESTS=("${CORE_TESTS[@]}")
     elif [[ ${TEST_TYPE:=""} == "Always" ]]; then
