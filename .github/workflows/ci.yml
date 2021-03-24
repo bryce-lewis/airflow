@@ -504,7 +504,9 @@ ${{ hashFiles('.pre-commit-config.yaml') }}"
     strategy:
       matrix:
         package-format: ['wheel', 'sdist']
-    if: needs.build-info.outputs.image-build == 'true'
+    if: >
+      needs.build-info.outputs.image-build == 'true' &&
+      github.ref == 'refs/heads/master' && github.repository == 'apache/airflow'
     steps:
       - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
         uses: actions/checkout@v2
@@ -551,7 +553,9 @@ ${{ hashFiles('.pre-commit-config.yaml') }}"
     strategy:
       matrix:
         package-format: ['wheel', 'sdist']
-    if: needs.build-info.outputs.image-build == 'true'
+    if: >
+      needs.build-info.outputs.image-build == 'true' &&
+      github.ref == 'refs/heads/master' && github.repository == 'apache/airflow'
     steps:
       - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
         uses: actions/checkout@v2
@@ -1033,8 +1037,8 @@ ${{ hashFiles('.pre-commit-config.yaml') }}"
       - tests-postgres
       - tests-mysql
       - tests-kubernetes
-      - prepare-provider-packages
-      - test-provider-packages-released-airflow
+      # - prepare-provider-packages
+      # - test-provider-packages-released-airflow
       - prod-images
       - docs
     if: >
